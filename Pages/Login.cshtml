@@ -1,0 +1,70 @@
+﻿@page
+@model Assignment2.Pages.LoginModel
+@{
+    var hasErrors = ViewData.ModelState?.IsValid == false && ViewData.ModelState?.ErrorCount > 0;
+var errorMessage = hasErrors ? ViewData.ModelState?[""]?.Errors.FirstOrDefault()?.ErrorMessage : "";
+
+}
+
+@if (hasErrors)
+{
+    <div class="alert alert-danger">
+        @foreach (var modelState in ViewData.ModelState.Values)
+        {
+            foreach (var error in modelState.Errors)
+            {
+                <p>@error.ErrorMessage</p>
+            }
+        }
+    </div>
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center align-items-center">
+        <div class="col-sm-12 col-md-12 col-lg-4">
+            <h1 class="mb-3">Login</h1>
+
+            <script src="https://www.google.com/recaptcha/api.js?render=YOUR_ACTUAL_SITE_KEY"></script>
+            <form id="loginForm" method="post">
+
+				<div class="mb-3">
+					<label class="form-label" asp-for="LModel.Email">Email Address</label>
+					<input type="Text" asp-for="LModel.Email" class="form-control" />
+					<span asp-validation-for="LModel.Email" class="text-danger"></span>
+				</div>
+
+				<div class="mb-3">
+					<label class="form-label" asp-for="LModel.Password">Password</label>
+					<input type="Text" asp-for="LModel.Password" class="form-control" />
+					<span asp-validation-for="LModel.Password" class="text-danger"></span>
+				</div>
+
+				<div class="mb-3 form-check">
+					<input type="checkbox" asp-for="LModel.RememberMe" class="form-check-input" />
+					<label class="form-check-label" asp-for="LModel.RememberMe">Remember Me?</label>
+				</div>
+                <input type="hidden" id="recaptchaResponse" name="recaptcha_response">
+
+                <div class="g-recaptcha"
+                     data-sitekey="6LdYTmIpAAAAABfDNsbEaPqTs3O220BPSTRYiFCI"
+                     data-callback="onSubmit"
+                     data-size="invisible">
+                </div>
+
+                <div class="mb-3">
+                    <button type="submit" class="btn btn-primary">Login</button>
+                </div>
+
+            </form>
+            <script>
+                <script>
+                    grecaptcha.ready(function () {
+                        grecaptcha.execute('6LdYTmIpAAAAABfDNsbEaPqTs3O220BPSTRYiFCI', { action: 'login' }).then(function (token) {
+                            // Add the token to the form
+                            document.getElementById('recaptchaResponse').value = token;
+                        });
+                    });
+            </script>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,28 @@
+﻿@page
+@model Assignment2.Pages.HomeModel
+@{
+    ViewData["Title"] = "Home";
+}
+
+<div class="container">
+    <h1>Welcome,@Model.User.FullName!</h1>
+
+    <div class="user-profile">
+        <h2>Your Profile</h2>
+        <ul>
+            <li><strong>Full Name:</strong> @Model.User.FullName</li>
+            <li><strong>Email:</strong> @Model.User.Email</li>
+            <li><strong>Credit Card Number:</strong> @Model.User.CreditCardNo</li>
+            <li><strong>Gender:</strong> @Model.User.Gender</li>
+            <li><strong>Mobile Number:</strong> @Model.User.MobileNo</li>
+            <li><strong>Delivery Address:</strong> @Model.User.DeliveryAddress</li>
+
+        </ul>
+        <p><strong>About Me:</strong></p>
+        <p>@Model.User.AboutMe</p>
+        <!-- Display the user's photo using the fetched URL -->
+        <div class="user-photo">
+            <img src="@Model.UserPhotoUrl" alt="User Photo">
+        </div>
+    </div>
+</div>

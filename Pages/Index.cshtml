@@ -1,0 +1,36 @@
+﻿@page
+@inject IHttpContextAccessor contxt
+@model Assignment2.Pages.IndexModel
+@{
+    ViewData["Title"] = "Home";
+}
+
+<div class="container">
+    <h1>Welcome, @Model.AppUser.FullName!</h1>
+
+    <div class="user-profile">
+        <h2>Your Profile</h2>
+        <ul>
+            <li><strong>Full Name:</strong> @Model.AppUser.FullName</li>
+            <li><strong>Email:</strong> @Model.AppUser.Email</li>
+            <li><strong>Credit Card Number:</strong> @Model.AppUser.CreditCardNo</li>
+            <li><strong>Gender:</strong> @Model.AppUser.Gender</li>
+            <li><strong>Mobile Number:</strong> @Model.AppUser.MobileNo</li>
+            <li><strong>Delivery Address:</strong> @Model.AppUser.DeliveryAddress</li>
+        </ul>
+        <p><strong>About Me:</strong></p>
+        <p>@Model.AppUser.AboutMe</p>
+
+        <!--  <div class="user-photo">
+            <img src="@Model.UserPhotoUrl" alt="User Photo">
+        </div>
+    
+        <!--  <p><strong>User Photo URL:</strong> @Model.UserPhotoUrl</p>
+        <!-- Display the user's photo using the Photo property 
+        <div class="user-photo">
+            <img src="~/uploads/@Model.AppUser.Photo" alt="User Photo">
+        </div>
+        <img src="~/uploads/@Model.AppUser.Photo" alt="User Photo">-->
+
+    </div>
+</div>

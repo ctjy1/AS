@@ -1,0 +1,19 @@
+﻿@page
+@model Assignment2.Pages.Error.error401Model
+@{
+    ViewData["title"] = "Unauthorized Access";
+}
+
+<div class="error-container">
+    <div class="error-header">
+        <h1>401</h1>
+        <p>Unauthorized Access</p>
+    </div>
+    <div class="error-message">
+        <p>This page requires authentication or you do not have the necessary permissions to access it.</p>
+        <p>Please log in with valid credentials or contact the administrator for assistance.</p>
+    </div>
+    <div class="error-link">
+        <p>Return to <a href="https://localhost:7087/Login">Login</a></p>
+    </div>
+</div>
